@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: collectd-influxdb
+  namespace: influxdb
+  labels:
+    name: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+
+  template:
+    metadata:
+      labels:
+        app: influxdb
+    spec:
+      containers:
+        - image: docker.io/opnfv/barometer-influxdb
+          name: influxdb
+          volumeMounts:
+            - mountPath: /data
+              name: influxdb-data
+          imagePullPolicy: Always
+      volumes:
+        - name: influxdb-data
+          emptyDir: {}
+      restartPolicy: Always
+
