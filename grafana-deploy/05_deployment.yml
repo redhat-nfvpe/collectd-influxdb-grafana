@@ -1,15 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: collectd-influxdb
-  namespace: influxdb
+  name: collectd-grafana
+  namespace: grafana
   labels:
-    name: influxdb
+    name: grafana
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: influxdb
+      app: grafana
 
   strategy:
     rollingUpdate:
@@ -20,12 +20,15 @@ spec:
   template:
     metadata:
       labels:
-        app: influxdb
+        app: grafana
     spec:
       containers:
-        - image: docker.io/opnfv/barometer-influxdb
-          name: influxdb
+        - image: docker.io/opnfv/barometer-grafana
+          name: grafana
           imagePullPolicy: Always
+          env:
+            - name: influxdb_host
+              value: "$INFLUXDB_SVC_HOST_IP"
           volumeMounts:
             - name:  influxdb-data
               mountPath:  /var/lib/influxdb/data
@@ -33,5 +36,5 @@ spec:
         - name:  influxdb-data
           emptyDir: {}
       restartPolicy: Always
-      serviceAccount: influxdb
-      serviceAccountName: influxdb
+      serviceAccount: grafana
+      serviceAccountName: grafana
