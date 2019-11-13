@@ -1,14 +1,21 @@
-# influxdb service
-apiVersion: v1
-
 kind: Service
-
+apiVersion: v1
 metadata:
   name: influxdb-svc
   namespace: influxdb
 spec:
   ports:
-    - port: 8086
+    - name: http-svc
+      protocol: TCP
+      port: 8086
       targetPort: 8086
+    - name: collectd-svc
+      protocol: TCP
+      port: 25826
+      targetPort: 25826
   selector:
     app: influxdb
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
