@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ocp4x-collectd
+  name: collectd
   labels:
-    name: ocp4x-collectd
+    name: collectd
     openshift.io/run-level: "0"
     openshift.io/cluster-monitoring: "false"
   annotations:

@@ -1,0 +1,17 @@
+﻿﻿kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: sa-grafana-route
+  namespace: sa-grafana
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: sa-grafana-route-sa-grafana.apps-crc.testing
+  subdomain: ''
+  to:
+    kind: Service
+    name: sa-grafana-svc
+    weight: 100
+  port:
+    targetPort: 3000
+  wildcardPolicy: None

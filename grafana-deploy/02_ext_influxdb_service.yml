@@ -1,0 +1,13 @@
+# influxdb service
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: sa-grafana-svc
+  namespace: sa-grafana
+spec:
+  ports:
+    - name: "external-influxdb"
+      port: 8086
+      targetPort: 8086

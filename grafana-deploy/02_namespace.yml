@@ -1,6 +1,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name:  grafana
+  name:  sa-grafana
   labels:
-    app: grafana
+    app: sa-grafana

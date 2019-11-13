@@ -1,0 +1,17 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: influxdb-collectd-svc
+  namespace: influxdb
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: influxdb-collectd-svc-influxdb.apps-crc.testing
+  subdomain: ''
+  to:
+    kind: Service
+    name: influxdb-collectd-svc
+    weight: 100
+  port:
+    targetPort: collectd-svc
+  wildcardPolicy: None
