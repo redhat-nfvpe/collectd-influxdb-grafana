@@ -29,6 +29,7 @@ data:
     LoadPlugin uptime
     LoadPlugin intel_pmu
     LoadPlugin intel_rdt
+    LoadPlugin network
     LoadPlugin write_prometheus
     #<Plugin intel_pmu>
     #  ReportHardwareCacheEvents true
@@ -50,3 +51,5 @@ data:
     <Plugin "write_prometheus">
       Port "9103"
     </Plugin>
+
+    #Last line (collectd requires ‘\n’ at the last line)
