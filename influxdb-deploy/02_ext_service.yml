@@ -10,7 +10,7 @@ spec:
       protocol: UDP
       port: 25826
       targetPort: 25826
-#      nodePort: xxx
+      nodePort: 30000
   selector:
     app: influxdb
   sessionAffinity: None

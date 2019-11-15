@@ -31,6 +31,9 @@ spec:
         terminationMessagePath: /dev/termination-log
 
         volumeMounts:
+        - mountPath: /var/cache/pmu
+          name: pmu
+          readOnly: false
         - mountPath: /opt/collectd/etc/
           name: config
           readOnly: true
@@ -51,6 +54,10 @@ spec:
 #          name: proc
 #          readOnly: true
       volumes:
+        - name: pmu
+          hostPath:
+            path: /var/cache/pmu
+            type: DirectoryOrCreate
         - name: config
           configMap:
             name: collectd-config
