@@ -6,7 +6,6 @@ metadata:
   annotations:
     openshift.io/host.generated: 'true'
 spec:
-  host: influxdb-collectd-svc-influxdb.apps-crc.testing
   subdomain: ''
   to:
     kind: Service

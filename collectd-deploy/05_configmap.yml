@@ -25,12 +25,12 @@ data:
     LoadPlugin numa
     LoadPlugin processes
     LoadPlugin swap
-    LoadPlugin turbostat
+    #LoadPlugin turbostat
     LoadPlugin uptime
-    LoadPlugin intel_pmu
-    LoadPlugin intel_rdt
+    #LoadPlugin intel_pmu
+    #LoadPlugin intel_rdt
     LoadPlugin network
-    LoadPlugin write_prometheus
+    #LoadPlugin write_prometheus
     #<Plugin intel_pmu>
     #  ReportHardwareCacheEvents true
     #  ReportKernelPMUEvents true
@@ -39,17 +39,17 @@ data:
     #  HardwareEvents "L2_RQSTS.CODE_RD_HIT,L2_RQSTS.CODE_RD_MISS" "L2_RQSTS.ALL_CODE_RD"
     #  Cores "[0-4]"
     #</Plugin>
-    <LoadPlugin intel_rdt>
-      Interval 1
-    </LoadPlugin>
-    <Plugin intel_rdt>
-      Cores ""
-    </Plugin>
+    #<LoadPlugin intel_rdt>
+    #  Interval 1
+    #</LoadPlugin>
+    #<Plugin intel_rdt>
+    #  Cores ""
+    #</Plugin>
     <Plugin network>
         Server "<destination_host_goes_here>" "25826" #InfluxDB
     </Plugin>
-    <Plugin "write_prometheus">
-      Port "9103"
-    </Plugin>
+    #<Plugin "write_prometheus">
+    #  Port "9103"
+    #</Plugin>
 
     #Last line (collectd requires ‘\n’ at the last line)
